@@ -10,6 +10,14 @@ export const clearResults = () => {
   elements.searchResPages.innerHTML = '';
 }
 
+export const highlightSelected = id => {
+  const resultsArr = Array.from(document.querySelectorAll('.results__link'));
+  resultsArr.forEach(el => {
+    el.classList.remove('results__link--active');
+  })
+  document.querySelector(`a[href="#${id}"]`).classList.add('results__link--active');
+}
+
 // 'Pasta with tomato and spinach' - test string
 
 const limitRecipetitle = (title, limit = 17) => {
@@ -47,7 +55,7 @@ const renderRecipe = recipe => {
   elements.searchResList.insertAdjacentHTML('beforeend', markup)
 }
 
-// type: 'prev' or 'next'
+// type: 'prev' or 'next' btns
 const createButton = (page, type) => `
   <button class="btn-inline results__btn--${type}" data-goto=${type === 'prev' ? page - 1 : page + 1}>
   <span>Page ${type === 'prev' ? page - 1 : page + 1}</span>

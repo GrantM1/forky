@@ -20,10 +20,12 @@ export default class Recipe {
       dataReq.data.extendedIngredients.forEach(element => {
         ingArr.push(`${element.name} ${element.amount} ${element.unit}`)
       });
+      // console.log(this.instructions);
     } catch (error) {
       alert(`Something went wrong :(`)
     }
   }
+
   calcTime() {
     // assuming that we need 15 min for each 3 ingredients
     const numIng = this.extendedIngredients.length;
@@ -36,6 +38,7 @@ export default class Recipe {
   parseIngredients() {
     const unitsLong = ['tablespoon', 'tablespoons', 'ounces', 'ounce', 'teaspoons', 'teaspoon', 'cups', 'pound'];
     const unitsShort = ['tbsp', 'tbsp', 'oz', 'oz', 'tsp', 'tsp', 'cup', 'pound'];
+    const units = [...unitsShort, 'kg', 'g'];
 
     const newIngredients = this.ingArr.map(el => {
       // 1) Uniform units
@@ -48,10 +51,10 @@ export default class Recipe {
 
       // 3) Parse ingredients into count, unit and ingredient
       const arrIng = ingredient.split(' ');
-      const unitIndex = arrIng.findIndex(el3 => unitsShort.includes(el3));
+      const unitIndex = arrIng.findIndex(el3 => units.includes(el3));
       const count3 = parseFloat(arrIng.slice(unitIndex - 1, unitIndex).join(" "));
       const arrCount = arrIng.slice(0, unitIndex - 1).join(" ");
-      console.log(unitIndex);
+      // console.log(unitIndex);
 
       let objIng;
       objIng = {
@@ -60,7 +63,7 @@ export default class Recipe {
         ingredient: arrCount
       };
       if (unitIndex === -1) {
-        objIng.unit = arrIng[arrIng.length - 1] || 'piece/pieces';
+        objIng.unit = arrIng[arrIng.length - 1];
       }
 
       // if (unitIndex > - 1) {
@@ -101,8 +104,22 @@ export default class Recipe {
       // }
       // return objIng;
       return objIng;
-
     });
-    console.log(newIngredients);
+    this.ingArr = newIngredients;
+    // console.log(this.ingArr.map(el => el.unit + el.unit));
+
+  }
+  updateServings(type) {
+    // Servings
+    const newServings = type === 'dec' ? this.servings - 1 : this.servings + 1;
+
+    // Ingredients
+
+    this.ingArr.forEach(ing => {
+      ing.count *= (newServings / this.servings)
+    });
+
+    this.servings = newServings;
+
   }
 }  
