@@ -15,12 +15,12 @@ export const highlightSelected = id => {
   resultsArr.forEach(el => {
     el.classList.remove('results__link--active');
   })
-  document.querySelector(`a[href="#${id}"]`).classList.add('results__link--active');
+  document.querySelector(`.results__link[href*="${id}"]`).classList.add('results__link--active');
 }
 
 // 'Pasta with tomato and spinach' - test string
 
-const limitRecipetitle = (title, limit = 17) => {
+export const limitRecipetitle = (title, limit = 17) => {
   if (title.length > limit) {
     const newTitle = [];
     title.split(' ').reduce((acc, cur) => {
@@ -85,7 +85,7 @@ const renderButtons = (page, numResults, resPerPage) => {
   elements.searchResPages.insertAdjacentHTML('afterbegin', button);
 };
 
-export const renderResults = (recipes, page = 1, resPerPage = 4) => {
+export const renderResults = (recipes, page = 1, resPerPage = 5) => {
   // render results of current page 
   const start = (page - 1) * resPerPage;
   const end = page * resPerPage;

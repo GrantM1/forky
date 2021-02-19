@@ -13,8 +13,9 @@
     "build-prod": "parcel build src/index.html"
   },
   "dependencies": {
-    "axios": "^0.21.0",
-    "fractional": "^1.0.0"
+    "axios": "^0.21.1",
+    "fractional": "^1.0.0",
+    "uniqid": "^5.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.3",
