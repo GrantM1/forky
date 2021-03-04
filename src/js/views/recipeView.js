@@ -67,14 +67,11 @@ export const renderRecipe = (recipe, isLiked) => {
 
               <div class="recipe__info-buttons">
                   <button class="btn-tiny btn-decrease">
-                      <svg>
-                          <use href="img/icons.svg#icon-circle-with-minus"></use>
-                      </svg>
+< <img src="img/negative.png" alt="">
+
                   </button>
                   <button class="btn-tiny btn-increase">
-                      <svg>
-                          <use href="img/icons.svg#icon-circle-with-plus"></use>
-                      </svg>
+> <img src="img/positive.png" alt="">
                   </button>
               </div>
 

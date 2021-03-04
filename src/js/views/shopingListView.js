@@ -22,3 +22,8 @@ export const deleteItem = id => {
   const item = document.querySelector(`[data-itemid="${id}"]`);
   if (item) item.parentElement.removeChild(item);
 }
+
+export const deleteAllItem = () => {
+  const Allitem = document.querySelector('shopping__list');
+  if (Allitem) item.parentElement.removeChild(Allitem);
+}

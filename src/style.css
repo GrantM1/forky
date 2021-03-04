@@ -41,6 +41,12 @@ body {
       margin: 0;
       border-radius: 0; } }
 
+      div ul {
+        overflow-x: hidden;
+        overflow-y: scroll;
+        white-space: nowrap;
+     }
+
 .btn, .btn-small, .btn-small:link, .btn-small:visited {
   background-image: linear-gradient(to right bottom, #FBDB89, #F48982);
   border-radius: 10rem;
@@ -457,7 +463,8 @@ li, ol, p {
   .shopping__list {
     list-style: none;
     max-height: 77rem;
-    overflow: scroll; }
+    overflow-y: scroll; 
+    overflow-x: hidden; }
   .shopping__item {
     display: flex;
     align-items: flex-start;
