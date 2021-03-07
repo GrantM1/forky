@@ -137,6 +137,7 @@ const controlList = () => {
   });
 }
 
+
 //handling delete and update list item events
 elements.shopping.addEventListener('click', e => {
   const id = e.target.closest('.shopping__item').dataset.itemid;
@@ -152,6 +153,14 @@ elements.shopping.addEventListener('click', e => {
     const val = parseFloat(e.target.value, 10);
     state.list.updateCount(id, val);
   }
+});
+
+elements.shoppingListRemoveAllButton.addEventListener('click', e => {
+  const allItemsSelected = e.target.matches('.remove__shoppingList');
+  // remove from state
+  state.list.deleteAllItems();
+  // remove from UI
+  listView.deleteAllItems();
 });
 
 
