@@ -1,3 +1,4 @@
+import { doc } from 'prettier';
 import { elements } from './base';
 
 export const renderItem = item => {
@@ -22,3 +23,12 @@ export const deleteItem = id => {
   const item = document.querySelector(`[data-itemid="${id}"]`);
   if (item) item.parentElement.removeChild(item);
 }
+
+export const deleteAllItems = () => {
+  const allItems = document.querySelectorAll('.shopping__item');
+  allItems.forEach(el => {
+    if (el) el.parentElement.removeChild(el);
+  });
+}
+
+

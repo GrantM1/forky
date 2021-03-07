@@ -5,13 +5,16 @@ export const clearRecipe = () => {
   elements.recipe.innerHTML = '';
 };
 
+
+// sometimes number go 0.3333333...
 const formatCount = count => {
   if (count) {
     // count = 2.5 --> 5/2 --> 2 1/2
     // count = 0.5 --> 1/2
-    const newCount = Math.round(count * 10000) / 10000;
-    const [int, dec] = newCount.toString().split('.').map(el => parseInt(el, 10));
 
+    const newCount = Math.round(count * 10) / 10;
+
+    const [int, dec] = newCount.toString().split('.').map(el => parseInt(el, 10));
     if (!dec) return newCount;
 
     if (int === 0) {
@@ -64,14 +67,11 @@ export const renderRecipe = (recipe, isLiked) => {
 
               <div class="recipe__info-buttons">
                   <button class="btn-tiny btn-decrease">
-                      <svg>
-                          <use href="img/icons.svg#icon-circle-with-minus"></use>
-                      </svg>
+< <img src="img/negative.png" alt="">
+
                   </button>
                   <button class="btn-tiny btn-increase">
-                      <svg>
-                          <use href="img/icons.svg#icon-circle-with-plus"></use>
-                      </svg>
+> <img src="img/positive.png" alt="">
                   </button>
               </div>
 
